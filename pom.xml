@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.nubu.springtest02</groupId>
-    <artifactId>springtest02</artifactId>
+    <groupId>no.bjornakr.springboottest</groupId>
+    <artifactId>springboottest</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -59,7 +59,7 @@
     </dependencies>
 
     <properties>
-        <java.version>1.9</java.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <build>

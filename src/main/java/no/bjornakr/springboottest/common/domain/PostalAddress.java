@@ -1,11 +1,9 @@
 package no.bjornakr.springboottest.common.domain;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import no.bjornakr.springboottest.common.Trimmer;
-import no.bjornakr.springboottest.common.error_handling.EntityConstructionException;
+import no.bjornakr.springboottest.common.error_handling.ErrorMessages;
 
 import javax.persistence.Embeddable;
-import no.bjornakr.springboottest.common.error_handling.*;
 
 @Embeddable
 public class PostalAddress {
