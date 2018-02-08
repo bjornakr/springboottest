@@ -33,7 +33,7 @@ public class Controller {
 
             return ResponseEntity.created(location).build();
         }
-        catch (EntityConstructionException e) {
+        catch (IllegalArgumentException | NullPointerException e) {
             ErrorResponseDto errorResponseDto = new ErrorResponseDto(e.getMessage());
             return ResponseEntity.badRequest().body(errorResponseDto);
         }

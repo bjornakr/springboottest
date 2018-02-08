@@ -61,7 +61,7 @@ public class PostalAddressTest {
         assertThat(testAddress.getCountry(), equalTo(TEST_COUNTRY));
     }
 
-    @Test(expected = EntityConstructionException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void constructor_invalidPostalNumber_error() {
         new PostalAddress(
                 TEST_STREET1,

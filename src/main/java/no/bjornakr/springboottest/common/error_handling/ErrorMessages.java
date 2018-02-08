@@ -7,7 +7,8 @@ public enum ErrorMessages {
     LastNameCannotBeEmpty("Last name cannot be empty."),
     EmailCannotBeEmpty("E-mail cannot be empty."),
     InvalidEmail("Invalid e-mail: "),
-    InvalidPostalCode("Invalid postal code: ")
+    InvalidPostalCode("Invalid postal code: "),
+    PostalAddressCannotBeNull("Postal address cannot be null.")
     ;
 
     private String value;

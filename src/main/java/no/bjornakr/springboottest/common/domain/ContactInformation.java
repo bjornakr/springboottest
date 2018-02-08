@@ -43,23 +43,26 @@ public class ContactInformation {
         private String telephoneNumber;
         private PostalAddress postalAddress;
 
-        public Builder(PostalAddress value) {
-            postalAddress = value;
+        public Builder(PostalAddress postalAddress, String eMail) {
+            Objects.requireNonNull(postalAddress, ErrorMessages.PostalAddressCannotBeNull.toString());
+            Objects.requireNonNull(eMail, String.format("%s'%s'.", ErrorMessages.EmailCannotBeEmpty, eMail));
+            String eMailTrimmed = eMail.trim();
+
+            if (eMailTrimmed.isEmpty()) {
+                throw new IllegalArgumentException(ErrorMessages.EmailCannotBeEmpty.toString());
+            }
+            if (!isEmailValid(eMailTrimmed)) {
+                String errorMessage = String.format("%s'%s'.", ErrorMessages.InvalidEmail, eMailTrimmed);
+                throw new IllegalArgumentException(errorMessage);
+            }
+
+            this.postalAddress = postalAddress;
+            this.eMail = eMailTrimmed;
         }
+
 
         public ContactInformation build() {
             return new ContactInformation(this);
-        }
-
-        public Builder eMail(String value) {
-            Objects.requireNonNull(value);
-            String trimmedEmail = value.trim();
-            if (!isEmailValid(trimmedEmail)) {
-                String errorMessage = String.format("%s'%s'.", ErrorMessages.InvalidEmail, trimmedEmail);
-                throw new IllegalArgumentException(errorMessage);
-            }
-            eMail = trimmedEmail;
-            return this;
         }
 
         public Builder telephoneNumber(String value) {
@@ -67,13 +70,8 @@ public class ContactInformation {
             return this;
         }
 
-//        public Builder postalAddress(PostalAddress value) {
-//            postalAddress = value;
-//            return this;
-//        }
-
         // Taken from StackOverflow (Jason Buberel): https://stackoverflow.com/a/8204716
-        private boolean isEmailValid(String emailStr) {
+        private static boolean isEmailValid(String emailStr) {
             Pattern VALID_EMAIL_ADDRESS_REGEX =
                     Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
                             Pattern.CASE_INSENSITIVE);
@@ -82,37 +80,4 @@ public class ContactInformation {
         }
 
     }
-
-
-//    public ContactInformation(
-//            String eMail,
-//            String telephoneNumber,
-//            PostalAddress postalAddress) {
-//        Objects.requireNonNull(postalAddress);
-//
-//
-//        String trimmedTelephoneNo = telephoneNumber.trim();
-//
-//        this.eMail = eMail;
-//        this.telephoneNumber = telephoneNumber;
-//        this.postalAddress = postalAddress;
-//    }
-//
-//    // Taken from StackOverflow (Jason Buberel): https://stackoverflow.com/a/8204716
-//    private boolean isEmailValid(String emailStr) {
-//        Pattern VALID_EMAIL_ADDRESS_REGEX =
-//                Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
-//                        Pattern.CASE_INSENSITIVE);
-//        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
-//        return matcher.find();
-//    }
-//
-//    private String validateEmail(String eMail) {
-//        String s = Trimmer.apply(eMail);
-//        if (!isEmailValid(s)) {
-//            String err = String.format("%s'%s'.", ErrorMessages.InvalidEmail, s);
-//            throw new EntityConstructionException(this.getClass(), err);
-//        }
-//        return s;
-//    }
 }

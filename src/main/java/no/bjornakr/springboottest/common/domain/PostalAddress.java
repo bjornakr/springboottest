@@ -1,9 +1,11 @@
 package no.bjornakr.springboottest.common.domain;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import no.bjornakr.springboottest.common.Trimmer;
 import no.bjornakr.springboottest.common.error_handling.EntityConstructionException;
 
 import javax.persistence.Embeddable;
+import no.bjornakr.springboottest.common.error_handling.*;
 
 @Embeddable
 public class PostalAddress {
@@ -29,7 +31,8 @@ public class PostalAddress {
     private String validatePostalCode(String postalCode) {
         String p = Trimmer.apply(postalCode);
         if (p != null && !p.matches("\\d*")) {
-            throw new EntityConstructionException(this.getClass(), "Invalid postal code: '" + postalCode + "'.");
+            String errorMessage = String.format("%s%s", ErrorMessages.InvalidPostalCode, p);
+            throw new IllegalArgumentException(errorMessage);
         }
         return p;
     }

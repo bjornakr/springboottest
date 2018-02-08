@@ -15,44 +15,10 @@ public class Respondent {
     @Embedded
     private ContactInformation contactInformation;
 
-//    private String firstName;
-//    private String lastName;
-//    private String eMail;
-//    private String telephoneNumber;
-//
-//    @Embedded
-//    private PostalAddress postalAddress;
-
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
-//    public void setFirstName(String firstName) {
-//        this.firstName = firstName;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
-//
-//    public void seteMail(String eMail) {
-//        this.eMail = eMail;
-//    }
-//
-//    public void setTelephoneNumber(String telephoneNumber) {
-//        this.telephoneNumber = telephoneNumber;
-//    }
-//
-//    public void setPostalAddress(PostalAddress postalAddress) {
-//        this.postalAddress = postalAddress;
-//    }
-
-
     protected Respondent() {
         // Required by JPA - DO NOT USE!!!
     }
 
-    //    @Autowired
     public Respondent(
             Name name,
             ContactInformation contactInformation
@@ -74,33 +40,4 @@ public class Respondent {
     public ContactInformation getContactInformation() {
         return contactInformation;
     }
-
-
-//    private String trimRequiredString(String s, ErrorMessages errorMessage) {
-//        String t = Trimmer.apply(s);
-//        if (t == null) {
-//            throw new EntityConstructionException(this.getClass(), errorMessage.toString());
-//        } else {
-//            return t;
-//        }
-//    }
-
-//    // Taken from StackOverflow (Jason Buberel): https://stackoverflow.com/a/8204716
-//    private boolean isEmailValid(String emailStr) {
-//        Pattern VALID_EMAIL_ADDRESS_REGEX =
-//                Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
-//                        Pattern.CASE_INSENSITIVE);
-//        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
-//        return matcher.find();
-//    }
-//
-//    private String validateEmail(String eMail) {
-//        String s = Trimmer.apply(eMail);
-//        if (!isEmailValid(s)) {
-//            String err = String.format("%s'%s'.", ErrorMessages.InvalidEmail, s);
-//            throw new EntityConstructionException(this.getClass(), err);
-//        }
-//        return s;
-//    }
-
 }

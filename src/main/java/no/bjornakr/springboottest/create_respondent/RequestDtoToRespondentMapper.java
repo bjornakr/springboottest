@@ -21,8 +21,7 @@ public class RequestDtoToRespondentMapper {
         );
 
         ContactInformation contactInformation = new ContactInformation
-                .Builder(postalAddress)
-                .eMail(requestDto.geteMail())
+                .Builder(postalAddress, requestDto.geteMail())
                 .telephoneNumber(requestDto.getTelephoneNumber())
                 .build();
 
