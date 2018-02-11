@@ -3,11 +3,11 @@ package no.bjornakr.springboottest.common.domain;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
+@Entity(name="respondents")
 public class Respondent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id; // Required by JPA
 
     @Embedded
     private Name name;

@@ -1,5 +1,9 @@
 package no.bjornakr.springboottest;
 
+import no.bjornakr.springboottest.common.domain.ContactInformation;
+import no.bjornakr.springboottest.common.domain.Name;
+import no.bjornakr.springboottest.common.domain.PostalAddress;
+import no.bjornakr.springboottest.common.domain.Respondent;
 import no.bjornakr.springboottest.common.repository.RespondentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,18 +23,18 @@ public class Application {
     @Bean
     CommandLineRunner init(RespondentRepository createRespondentRepository) {
         return (evt) -> {
-//            createRespondentRepository.save(new Respondent(
-//                    new Name("Testguy", "Johnson"),
-//                    "eee@mail.com",
-//                    "+47 95 16 61 36",
-//                    new PostalAddress(
-//                            "Street 1",
-//                            "Street 2",
-//                            "0192",
-//                            "Oslo",
-//                            "Norway"
-//                    )
-//            ));
+            createRespondentRepository.save(new Respondent(
+                    new Name("Testguy", "Johnson"),
+                    new ContactInformation.Builder(new PostalAddress(
+                            "Street 1",
+                            "Street 2",
+                            "0192",
+                            "Oslo",
+                            "Norway"
+                    ), "eee@mail.com")
+                    .telephoneNumber("+47 95 16 61 36")
+                    .build()
+            ));
 //            System.out.println("Hi?");
         };
     }
