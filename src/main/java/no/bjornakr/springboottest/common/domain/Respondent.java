@@ -6,7 +6,8 @@ import java.util.Objects;
 @Entity(name="respondents")
 public class Respondent {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="s", sequenceName="respondents_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s")
     private Long id; // Required by JPA
 
     @Embedded

@@ -1,5 +1,6 @@
+CREATE SEQUENCE respondents_id_seq;
 CREATE TABLE respondents (
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT NULL DEFAULT nextval('respondents_id_seq'),
     first_name varchar(128),
     last_name varchar(128),
     telephone_number varchar(128),
@@ -10,4 +11,5 @@ CREATE TABLE respondents (
     postal_code varchar(4),
     country varchar(128)
 );
+ALTER SEQUENCE respondents_id_seq OWNED BY respondents.id;
 

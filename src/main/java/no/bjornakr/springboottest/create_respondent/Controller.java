@@ -38,8 +38,8 @@ public class Controller {
             return ResponseEntity.badRequest().body(errorResponseDto);
         }
         catch (Exception e) {
-            e.printStackTrace(System.err);
-            return ResponseEntity.badRequest().build();
+            e.printStackTrace(System.err); // TODO: Logger
+            return ResponseEntity.badRequest().build(); // TODO: Internal server error?
         }
     }
 //    ResponseEntity<?> add(@PathVariable String userId, @RequestBody Bookmark input) {
