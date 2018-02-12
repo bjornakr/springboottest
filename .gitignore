@@ -2,6 +2,7 @@
 local*.md
 *.log
 *.iml
+src/main/resources/config
 *.ipr
 *.iws
 *.jar
