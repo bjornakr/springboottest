@@ -12,7 +12,8 @@ public class ResponseDto {
     private String city;
     private String country;
 
-    public ResponseDto() { }
+    public ResponseDto() {
+    }
 
     public ResponseDto(
             Long id,
@@ -38,7 +39,13 @@ public class ResponseDto {
         this.country = country;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format(
+                "{ %d, %s, %s, %s, %s, %s, %s, %s, %s, %s }",
+                id, firstName, lastName, eMail, telephoneNumber, street1, street2, postalCode, city, country
+        );
+    }
 
     public Long getId() {
         return id;

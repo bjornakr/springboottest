@@ -79,6 +79,7 @@
     <properties>
         <java.version>1.8</java.version>
         <!--<tomcat.version>9.0.4</tomcat.version>-->
+        <docker.image.prefix>springio</docker.image.prefix>
     </properties>
 
     <build>
@@ -87,7 +88,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
         </plugins>
+
     </build>
 
     <repositories>
