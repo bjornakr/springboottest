@@ -5,6 +5,7 @@ Testing the Spring Boot framework. The idea is to create a REST microservice, pa
 ### Useful links ###
 
 * [The Spring Boot reference guide](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
+* [Common application properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
 * https://cloud.google.com/kubernetes-engine/docs/tutorials/
 
 

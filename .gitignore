@@ -1,6 +1,6 @@
 *#
 local*.md
-*.log
+*.log*
 *.iml
 src/main/resources/config
 *.ipr
