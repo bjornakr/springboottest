@@ -11,7 +11,7 @@ public class NameTest {
     public static final Name ValidName = new Name(VALID_FIRST_NAME, VALID_LAST_NAME);
 
     @Test
-    public void jpaConstructor_Success() {
+    public void jpaConstructor_Invoked_Success() {
         new Name();
     }
 
@@ -21,34 +21,34 @@ public class NameTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void constructor_firstNameIsNull_Error() {
+    public void constructor_FirstNameIsNull_Error() {
         new Name(null, VALID_LAST_NAME);
     }
 
     @Test(expected = NullPointerException.class)
-    public void constructor_lastNameIsNull_Error() {
+    public void constructor_LastNameIsNull_Error() {
         new Name(VALID_FIRST_NAME, null);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void constructor_firstNameIsEmpty_Error() {
+    public void constructor_FirstNameIsEmpty_Error() {
         new Name("   ", VALID_LAST_NAME);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void constructor_lastNameIsEmpty_Error() {
+    public void constructor_LastNameIsEmpty_Error() {
         new Name(VALID_FIRST_NAME, "   ");
     }
 
     @Test
-    public void constructor_firstNameWithSpaces_firstNameIsTrimmed() {
+    public void constructor_FirstNameWithSpaces_FirstNameIsTrimmed() {
         String firstNameWithSpaces = String.format("  %s  ", VALID_FIRST_NAME);
         Name name = new Name(firstNameWithSpaces, VALID_LAST_NAME);
         assertThat(name.getFirstName(), equalTo(VALID_FIRST_NAME));
     }
 
     @Test
-    public void constructor_lastNameWithSpaces_lastNameIsTrimmed() {
+    public void constructor_LastNameWithSpaces_LastNameIsTrimmed() {
         String lastNameWithSpaces = String.format("  %s  ", VALID_LAST_NAME);
         Name name = new Name(VALID_FIRST_NAME, lastNameWithSpaces);
         assertThat(name.getLastName(), equalTo(VALID_LAST_NAME));

@@ -22,17 +22,17 @@ public class PostalAddressTest {
     );
 
     @Test
-    public void jpaConstructor_Success() {
+    public void jpaConstructor_Invoked_Success() {
         new PostalAddress();
     }
 
     @Test
-    public void constructor_validFields_success() {
+    public void constructor_ValidFields_Success() {
         assertThat(ValidPostalAdress, is(notNullValue()));
     }
 
     @Test
-    public void constructor_emptyOptionalStrings_convertedToNull() {
+    public void constructor_EmptyStrings_ConvertedToNull() {
         PostalAddress testAddress = new PostalAddress(
                 "   ", "   ", "  ", "  ", "  "
         );
@@ -45,7 +45,7 @@ public class PostalAddressTest {
     }
 
     @Test
-    public void constructor_validFields_trimsAllFields() {
+    public void constructor_FieldsWithSpaces_TrimsAllFields() {
         PostalAddress testAddress = new PostalAddress(
                 String.format("  %s  ", TEST_STREET1),
                 String.format("  %s  ", TEST_STREET2),
@@ -62,7 +62,7 @@ public class PostalAddressTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void constructor_invalidPostalNumber_error() {
+    public void constructor_InvalidPostalNumber_Error() {
         new PostalAddress(
                 TEST_STREET1,
                 TEST_STREET2,

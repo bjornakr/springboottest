@@ -12,12 +12,12 @@ public class RespondentTest {
     );
 
     @Test
-    public void jpaConstructor_Success() {
+    public void jpaConstructor_Invoked_Success() {
         new Respondent();
     }
 
     @Test
-    public void constructor_ValidFields_success() {
+    public void constructor_ValidFields_Success() {
         assertThat(ValidRespondent, is(notNullValue()));
         assertThat(ValidRespondent.getId(), is(nullValue()));
         assertThat(ValidRespondent.getContactInformation(),

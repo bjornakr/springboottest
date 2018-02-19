@@ -25,7 +25,7 @@ public class ContactInformationTest {
 
 
     @Test
-    public void jpaConstructor_invoked_Success() {
+    public void jpaConstructor_Invoked_Success() {
         assertThat(new ContactInformation(), is(notNullValue()));
     }
 
@@ -89,7 +89,7 @@ public class ContactInformationTest {
     }
 
     @Test
-    public void builder_fieldsWithSpaces_allFieldsTrimmed() {
+    public void builder_FieldsWithSpaces_AllFieldsTrimmed() {
         String spaces = "   %s   ";
         ContactInformation contactInformation = b
                 .telephoneNumber(String.format(spaces, VALID_TELEPHONE_NUMBER))

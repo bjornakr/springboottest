@@ -91,7 +91,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void createRespondent_allFieldsValid_created() throws Exception {
+    public void createRespondent_AllFieldsValid_Created() throws Exception {
         MockHttpServletRequestBuilder post = post("/respondents").contentType(jsonContentType);
 
         ResultActions resultActions = mockMvc.perform(post
@@ -105,7 +105,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void createRespondent_allFieldsValid_optionalFieldsOmitted_created() throws Exception {
+    public void createRespondent_AllFieldsValid_OptionalFieldsOmitted_Created() throws Exception {
         MockHttpServletRequestBuilder post = post("/respondents").contentType(jsonContentType);
 
         RequestDto request = validRequestContent();
@@ -127,7 +127,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void createRespondent_firstNameIsEmpty_badRequest() throws Exception {
+    public void createRespondent_FirstNameIsEmpty_BadRequest() throws Exception {
         MockHttpServletRequestBuilder post = post("/respondents").contentType(jsonContentType);
 
         RequestDto request = validRequestContent();
@@ -146,7 +146,7 @@ public class ControllerTest {
 
 
     @Test
-    public void createRespondent_lastNameIsEmpty_badRequest() throws Exception {
+    public void createRespondent_LastNameIsEmpty_BadRequest() throws Exception {
         MockHttpServletRequestBuilder post = post("/respondents").contentType(jsonContentType);
 
         RequestDto request = validRequestContent();
@@ -163,7 +163,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void createRespondent_eMailIsEmpty_badRequest() throws Exception {
+    public void createRespondent_EmailIsEmpty_BadRequest() throws Exception {
         MockHttpServletRequestBuilder post = post("/respondents").contentType(jsonContentType);
 
         RequestDto request = validRequestContent();
@@ -181,7 +181,7 @@ public class ControllerTest {
 
 
     @Test
-    public void createRespondent_invalidEmail_badRequest() throws Exception {
+    public void createRespondent_InvalidEmail_BadRequest() throws Exception {
         MockHttpServletRequestBuilder post = post("/respondents").contentType(jsonContentType);
 
         final String invalidEmail = "not_an_email";
@@ -200,7 +200,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void createRespondent_invalidPostalCode_badRequest() throws Exception {
+    public void createRespondent_InvalidPostalCode_BadRequest() throws Exception {
         MockHttpServletRequestBuilder post = post("/respondents").contentType(jsonContentType);
 
         final String invalidPostalCode = "not_a_postal_code";
