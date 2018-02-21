@@ -1,6 +1,7 @@
 package no.bjornakr.desertsnake.common.domain;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity(name="respondents")
@@ -9,6 +10,10 @@ public class Respondent {
     @SequenceGenerator(name="s", sequenceName="respondents_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s")
     private Long id; // Required by JPA
+
+//    private Timestamp created;
+//    private Timestamp updated;
+
 
     @Embedded
     private Name name;
