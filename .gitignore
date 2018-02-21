@@ -1,5 +1,6 @@
 *#
 local*.md
+application-local.properties
 *.log*
 *.iml
 src/main/resources/config

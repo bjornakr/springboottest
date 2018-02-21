@@ -5,5 +5,4 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml" />
     <logger name="root" level="WARN"/>
-    <logger name="no.bjornakr" level="DEBUG"/>
 </configuration>
