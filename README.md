@@ -23,15 +23,31 @@ Testing the Spring Boot framework. The idea is to create a REST microservice, pa
 
 
 ### Setup instructions ###
-1. Create a Postgres database for the application (see below).
-1. Create a user in Postgres with full rights on the database (see below). 
-1. Create a deployable .jar of the application.
-    1. From the root directory: `mvn clean package`. This creates an self contained web server.
+
+#### Development ####
+
+##### No Docker #####
+
+1. Create TWO postgres databases, one for running the application, 
+   and one for automated tests. You can use the SQL below.  
+1. Create a user in Postgres with full rights on the databases (see below). 
+1. In `src/main/java/resources`:
+   1. Copy `application-local.properties-example` to `application-local.properties'
+   2. Enter the correct database credentials in the local config.
+1. Repeat for `src/test/java/resources`.
+1. Run `mvn clean install`. The project should compile, and all tests should pass.
+
+##### Docker ###### 
+
+1. \<...>
+
+
+#### Deploy a self-contained jar ####
+1. From the project root directory: `mvn clean package`. This creates an self contained web server.
 1. Create a local config in a secure directory, outside of the webroot.
-    1. Example: in `~/.springboottest/application-test.config`
-    1. `chmod -R 700 ~/.springboottest`
-    1. See below for example configuration. 
-1. Run the application: `java -jar -Dspring.config.location=~/.springboottest/application-test.config`.
+    1. Example: `~/.desertsnake/application.config`
+    1. `chmod -R 700 ~/.desertsnake` 
+1. Run the application: `java -jar -Dspring.config.location=~/.desertsnake/application.config`.
 
 
 #### Database creation example ####
@@ -42,15 +58,4 @@ CREATE DATABASE desertsnake;
 -- Create user
 CREATE ROLE developer WITH LOGIN PASSWORD '<password>';
 GRANT ALL PRIVILEGES ON DATABASE desertsnake TO developer;
-```
-
-#### Local configuration example ####
-```
-logging.file=sprinbboottest-test.log
-logging.level.root=INFO
-logging.level.org.hibernate=INFO
-spring.datasource.url= jdbc:postgresql://localhost:5433/<database>
-spring.datasource.username=<user>
-spring.datasource.password=<password>
-spring.jpa.hibernate.ddl-auto=validate
 ```
