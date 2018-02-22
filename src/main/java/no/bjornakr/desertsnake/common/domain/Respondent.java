@@ -9,10 +9,13 @@ public class Respondent {
     @Id
     @SequenceGenerator(name="s", sequenceName="respondents_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s")
-    private Long id; // Required by JPA
+    private Long id;
 
-//    private Timestamp created;
-//    private Timestamp updated;
+    @Column(updatable=false, insertable=false)
+    private Timestamp created;
+
+    @Column(updatable=false, insertable=false)
+    private Timestamp updated;
 
 
     @Embedded
@@ -45,5 +48,13 @@ public class Respondent {
 
     public ContactInformation getContactInformation() {
         return contactInformation;
+    }
+
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public Timestamp getUpdated() {
+        return updated;
     }
 }

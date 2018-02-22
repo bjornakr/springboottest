@@ -9,8 +9,7 @@ CREATE TABLE respondents (
     street2 varchar(128),
     city varchar(128),
     postal_code varchar(4),
-    country varchar(128),
-    quafflestick varchar(129)
+    country varchar(128)
 );
 ALTER SEQUENCE respondents_id_seq OWNED BY respondents.id;
 

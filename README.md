@@ -59,3 +59,8 @@ CREATE DATABASE desertsnake;
 CREATE ROLE developer WITH LOGIN PASSWORD '<password>';
 GRANT ALL PRIVILEGES ON DATABASE desertsnake TO developer;
 ```
+
+
+### Useful stuff ###
+
+`mvn -Dflyway.url=jdbc:postgresql://localhost:5433/desertsnake_develop -Dflyway.user=developer -Dflyway.password=testpassword`
