@@ -6,7 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 
 public class RespondentTest {
-    private final static Respondent ValidRespondent = new Respondent(
+    public final static Respondent ValidRespondent = new Respondent(
             NameTest.ValidName,
             ContactInformationTest.ValidContactInformation
     );

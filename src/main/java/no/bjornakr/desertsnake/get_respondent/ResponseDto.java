@@ -11,6 +11,8 @@ public class ResponseDto {
     private String postalCode;
     private String city;
     private String country;
+    private String createdTime;
+    private String updatedTime;
 
     public ResponseDto() {
     }
@@ -25,7 +27,9 @@ public class ResponseDto {
             String street2,
             String postalCode,
             String city,
-            String country
+            String country,
+            String createdTime,
+            String updatedTime
     ) {
         this.id = id;
         this.firstName = firstName;
@@ -37,13 +41,16 @@ public class ResponseDto {
         this.postalCode = postalCode;
         this.city = city;
         this.country = country;
+        this.createdTime = createdTime;
+        this.updatedTime = updatedTime;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "{ %d, %s, %s, %s, %s, %s, %s, %s, %s, %s }",
-                id, firstName, lastName, eMail, telephoneNumber, street1, street2, postalCode, city, country
+                "{ %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s }",
+                id, firstName, lastName, eMail, telephoneNumber, street1, street2,
+                postalCode, city, country, createdTime, updatedTime
         );
     }
 
@@ -126,4 +133,21 @@ public class ResponseDto {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(String updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
 }

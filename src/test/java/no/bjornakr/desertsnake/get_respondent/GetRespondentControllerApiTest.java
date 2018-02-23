@@ -19,12 +19,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.anyLong;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
-
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -71,6 +75,17 @@ public class GetRespondentControllerApiTest {
 
         this.mockMvc.perform(requestBuilder)
                 .andExpect(status().isNotFound())
+        ;
+    }
+
+    @Test
+    public void getRespondent_RepositoryFails_InternalServerError() throws Exception {
+        given(respondentRepository.findOne(anyLong())).willThrow(new RuntimeException("Some kind of error."));
+
+        MockHttpServletRequestBuilder requestBuilder = get("/respondents/999").accept(MediaType.APPLICATION_JSON);
+
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(status().isInternalServerError())
         ;
     }
 }

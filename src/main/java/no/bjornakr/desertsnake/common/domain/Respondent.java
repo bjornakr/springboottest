@@ -2,6 +2,7 @@ package no.bjornakr.desertsnake.common.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity(name="respondents")
@@ -12,10 +13,10 @@ public class Respondent {
     private Long id;
 
     @Column(updatable=false, insertable=false)
-    private Timestamp created;
+    private LocalDateTime created;
 
     @Column(updatable=false, insertable=false)
-    private Timestamp updated;
+    private LocalDateTime updated;
 
 
     @Embedded
@@ -36,6 +37,8 @@ public class Respondent {
         Objects.requireNonNull(contactInformation);
         this.name = name;
         this.contactInformation = contactInformation;
+        this.created = LocalDateTime.now();
+        this.updated = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -50,11 +53,11 @@ public class Respondent {
         return contactInformation;
     }
 
-    public Timestamp getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public Timestamp getUpdated() {
+    public LocalDateTime getUpdated() {
         return updated;
     }
 }
