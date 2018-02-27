@@ -1,5 +1,7 @@
 package no.bjornakr.desertsnake.get_respondent;
 
+import java.util.Objects;
+
 public class ResponseDto {
     private Long id;
     private String firstName;
@@ -150,4 +152,27 @@ public class ResponseDto {
         this.updatedTime = updatedTime;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResponseDto that = (ResponseDto) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(eMail, that.eMail) &&
+                Objects.equals(telephoneNumber, that.telephoneNumber) &&
+                Objects.equals(street1, that.street1) &&
+                Objects.equals(street2, that.street2) &&
+                Objects.equals(postalCode, that.postalCode) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(createdTime, that.createdTime) &&
+                Objects.equals(updatedTime, that.updatedTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, eMail, telephoneNumber, street1, street2, postalCode, city, country, createdTime, updatedTime);
+    }
 }

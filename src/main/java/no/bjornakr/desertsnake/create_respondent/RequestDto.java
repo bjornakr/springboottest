@@ -1,6 +1,8 @@
 package no.bjornakr.desertsnake.create_respondent;
 
-class RequestDto {
+import java.util.Objects;
+
+public class RequestDto {
     private String firstName;
     private String lastName;
     private String eMail;
@@ -12,6 +14,27 @@ class RequestDto {
     private String country;
 
     public RequestDto() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RequestDto that = (RequestDto) o;
+        return Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(eMail, that.eMail) &&
+                Objects.equals(telephoneNumber, that.telephoneNumber) &&
+                Objects.equals(streetAddress1, that.streetAddress1) &&
+                Objects.equals(streetAddress2, that.streetAddress2) &&
+                Objects.equals(postalCode, that.postalCode) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(country, that.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, eMail, telephoneNumber, streetAddress1, streetAddress2, postalCode, city, country);
     }
 
     public RequestDto(String firstName, String lastName, String eMail, String telephoneNumber, String streetAddress1, String streetAddress2, String postalCode, String city, String country) {

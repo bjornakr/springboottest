@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -14,6 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 @RequestMapping(value = "/respondents")
 public class GetRespondentController {
+    private static final String ResourceName = "respondents";
     private static final Logger Logger = LoggerFactory.getLogger(GetRespondentController.class);
 
     private final GetRespondentApplicationService appService;
@@ -23,15 +25,28 @@ public class GetRespondentController {
         this.appService = appService;
     }
 
+    @RequestMapping(method = GET)
+    public @ResponseBody ResponseEntity get() {
+        Logger.debug("GET .../" + ResourceName);
+        try {
+            return getManyRespondents();
+        }
+        catch (Exception e) {
+            Logger.error("FAILED: GET .../" + ResourceName);
+            return handleError(e);
+        }
+    }
+
 
     @RequestMapping(value = "/{id}", method = GET)
     public @ResponseBody ResponseEntity get(@PathVariable Long id) { // (@RequestParam(value = "id", required = false) Long id) {
-        Logger.debug("GET .../respondents/" + id);
+        Logger.debug("GET .../" + ResourceName + "/" + id);
         try {
             return getRespondent(id);
         }
         catch (Exception e) {
-            return handleError(id, e);
+            Logger.error("FAILED: GET .../" + ResourceName +"/" + id);
+            return handleError(e);
         }
     }
 
@@ -42,8 +57,7 @@ public class GetRespondentController {
                 .orElseGet(() -> notFoundResponse(id));
     }
 
-    private ResponseEntity handleError(Long id, Exception e) {
-        Logger.error("FAILED: GET .../respondents/" + id);
+    private ResponseEntity handleError(Exception e) {
         Logger.error(e.getMessage(), e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
@@ -54,7 +68,13 @@ public class GetRespondentController {
     }
 
     private ResponseEntity notFoundResponse(Long id) {
-        Logger.debug("NOT FOUND:  .../respondents/" + id);
+        Logger.debug("NOT FOUND:  .../" + ResourceName + "/" + id);
         return ResponseEntity.notFound().build();
+    }
+
+    private ResponseEntity getManyRespondents() {
+        List<ResponseDto> respondents = appService.getAll();
+        Logger.debug("FOUND OK: " + respondents.size() + " " + ResourceName);
+        return new ResponseEntity<>(respondents, HttpStatus.OK);
     }
 }

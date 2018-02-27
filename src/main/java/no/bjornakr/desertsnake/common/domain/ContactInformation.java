@@ -18,6 +18,7 @@ public class ContactInformation {
 
 
     protected ContactInformation() {
+        // NB! For JPA ONLY - DO NOT USE!
     }
 
     private ContactInformation(Builder builder) {
